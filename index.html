@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MR Lingerie Store</title>
+
+<style>
+body {margin:0;font-family:Arial;background:#fff0f5;}
+header {background:linear-gradient(90deg,#c2185b,#880e4f);color:#fff;text-align:center;padding:20px;}
+
+.banner {
+  background:url('https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=1200&q=80');
+  background-size:cover;
+  height:220px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:28px;
+  font-weight:bold;
+}
+
+.produtos {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  padding:20px;
+}
+
+.produto {
+  background:#fff;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+
+.produto:hover {transform:scale(1.05);}
+
+.produto img {
+  width:100%;
+  height:250px;
+  object-fit:cover;
+}
+
+.info {padding:15px;}
+.preco {font-weight:bold;margin:10px 0;color:#c2185b;}
+
+.botao {
+  width:100%;
+  background:#25d366;
+  color:#fff;
+  padding:10px;
+  border:none;
+  cursor:pointer;
+}
+
+.carrinho {
+  position:fixed;
+  top:20px;
+  right:20px;
+  background:#fff;
+  padding:10px 15px;
+  border-radius:10px;
+  box-shadow:0 0 10px rgba(0,0,0,0.2);
+  font-weight:bold;
+}
+
+.whatsapp {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25d366;
+  color:#fff;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  cursor:pointer;
+}
+
+footer {
+  background:#880e4f;
+  color:#fff;
+  text-align:center;
+  padding:15px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>MR Lingerie Store</h1>
+<p>Moda íntima feminina 💖</p>
+</header>
+
+<div class="banner">🔥 Nova Coleção Sensual</div>
+
+<div class="carrinho" id="carrinho">🛒 0 itens</div>
+
+<section class="produtos">
+
+<div class="produto">
+<a href="https://images.unsplash.com/photo-1582418702059-97ebafb35d09?auto=format&fit=crop&w=900&q=80" target="_blank">
+<img src="https://images.unsplash.com/photo-1582418702059-97ebafb35d09?auto=format&fit=crop&w=400&q=80">
+</a>
+<div class="info">
+<h3>Conjunto Renda Luxo</h3>
+<p class="preco">R$ 59,90</p>
+<button class="botao" onclick="addCarrinho('Conjunto Renda Luxo')">Adicionar</button>
+</div>
+</div>
+
+<div class="produto">
+<a href="https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=900&q=80" target="_blank">
+<img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=400&q=80">
+</a>
+<div class="info">
+<h3>Conjunto Sensual</h3>
+<p class="preco">R$ 89,90</p>
+<button class="botao" onclick="addCarrinho('Conjunto Sensual')">Adicionar</button>
+</div>
+</div>
+
+<div class="produto">
+<a href="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=900&q=80" target="_blank">
+<img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=400&q=80">
+</a>
+<div class="info">
+<h3>Body Rendado</h3>
+<p class="preco">R$ 79,90</p>
+<button class="botao" onclick="addCarrinho('Body Rendado')">Adicionar</button>
+</div>
+</div>
+
+<div class="produto">
+<a href="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=900&q=80" target="_blank">
+<img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=400&q=80">
+</a>
+<div class="info">
+<h3>Conjunto Premium</h3>
+<p class="preco">R$ 119,90</p>
+<button class="botao" onclick="addCarrinho('Conjunto Premium')">Adicionar</button>
+</div>
+</div>
+
+</section>
+
+<div class="whatsapp" onclick="finalizarCompra()">💬</div>
+
+<footer>
+<p>WhatsApp: (15) 99773-8398</p>
+<p>© 2026 MR Lingerie Store</p>
+</footer>
+
+<script>
+let itens = [];
+
+function addCarrinho(produto){
+itens.push(produto);
+document.getElementById('carrinho').innerText = '🛒 ' + itens.length + ' itens';
+}
+
+function finalizarCompra(){
+if(itens.length === 0){alert('Carrinho vazio');return;}
+let mensagem = '🔥 Pedido MR Lingerie 🔥\n\n';
+itens.forEach((item,i)=>{
+mensagem += (i+1) + '. ' + item + '\n';
+});
+mensagem += '\nQuero finalizar a compra!';
+window.open('https://wa.me/5515997738398?text=' + encodeURIComponent(mensagem));
+}
+</script>
+
+</body>
+</html>
